@@ -3,6 +3,7 @@ import React, { createContext, useContext, useReducer, ReactNode } from "react";
 // Define the item type
 interface BasketItem {
   id: number;
+  image: string;
   name: string;
   price: number;
   quantity: number;
