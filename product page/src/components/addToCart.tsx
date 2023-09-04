@@ -5,7 +5,7 @@ export default function AddToCart() {
   const [amount, setAmount] = useState(0);
 
   function onMinus() {
-    if (amount === 0) {
+    if (amount === 1) {
       //throw error
     } else {
       setAmount(() => {
