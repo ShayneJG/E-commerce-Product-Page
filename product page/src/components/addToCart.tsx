@@ -1,9 +1,10 @@
-import { useState } from "react";
+interface AddToCartProps {
+  amount: number;
+  setAmount: React.Dispatch<React.SetStateAction<number>>;
+}
 
 //ADD: react context
-export default function AddToCart() {
-  const [amount, setAmount] = useState(0);
-
+export default function AddToCart({ amount, setAmount }: AddToCartProps) {
   function onMinus() {
     if (amount === 1) {
       //throw error
