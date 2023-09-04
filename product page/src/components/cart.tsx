@@ -1,6 +1,6 @@
 import { useBasket } from "../context/basketContext";
 
-function Cart() {
+export default function Cart() {
   const { state, dispatch } = useBasket();
 
   function onDeleteHandler(id: number) {
