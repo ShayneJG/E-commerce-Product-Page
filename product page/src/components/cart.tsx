@@ -3,8 +3,8 @@ import { useBasket } from "../context/basketContext";
 export default function Cart() {
   const { state, dispatch } = useBasket();
 
-  function onDeleteHandler(id: number) {
-    dispatch({ type: "REMOVE_ITEM", payload: id });
+  function onDeleteHandler(name: string) {
+    dispatch({ type: "REMOVE_ITEM", payload: name });
   }
 
   //JSX conditional elements for whether the cart is empty or full.
@@ -13,7 +13,7 @@ export default function Cart() {
     const total: number = item.price * item.quantity;
 
     return (
-      <div id={item.id.toString()}>
+      <div id={item.name} key={item.name}>
         <img src={item.image} />
         <div>
           <p>{item.name}</p>
@@ -26,7 +26,7 @@ export default function Cart() {
         </div>
         <button
           onClick={() => {
-            onDeleteHandler(item.id);
+            onDeleteHandler(item.name);
           }}
         >
           delete

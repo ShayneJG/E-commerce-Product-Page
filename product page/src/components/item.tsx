@@ -27,7 +27,7 @@ export default function Item({ item }: { item: ItemInterface }) {
           <div></div>
         </div>
       </div>
-      <AddToCart amount={amount} setAmount={setAmount} />
+      <AddToCart amount={amount} setAmount={setAmount} item={item} />
     </div>
   );
 }

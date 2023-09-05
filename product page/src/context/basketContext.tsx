@@ -1,8 +1,7 @@
 import React, { createContext, useContext, useReducer, ReactNode } from "react";
 
 // Define the item type
-interface BasketItem {
-  id: number;
+export interface BasketItem {
   image: string;
   name: string;
   price: number;
@@ -12,7 +11,7 @@ interface BasketItem {
 // Define action types
 type BasketAction =
   | { type: "ADD_ITEM"; payload: BasketItem }
-  | { type: "REMOVE_ITEM"; payload: number };
+  | { type: "REMOVE_ITEM"; payload: string };
 
 // Create the initial state
 const initialState: BasketItem[] = [];
@@ -33,10 +32,26 @@ const basketReducer = (
 ): BasketItem[] => {
   switch (action.type) {
     case "ADD_ITEM":
-      return [...state, action.payload];
+      const existingItemIndex = state.findIndex(
+        (item) => item.name === action.payload.name
+      );
 
+      if (existingItemIndex !== -1) {
+        // If the item already exists in state, update its quantity
+        const updatedState = state.slice(); // Create a shallow copy of the state array
+        updatedState[existingItemIndex] = {
+          ...updatedState[existingItemIndex],
+          quantity:
+            updatedState[existingItemIndex].quantity + action.payload.quantity,
+        };
+
+        return updatedState; // Return the updated state
+      } else {
+        // If the item is not in state, add it
+        return [...state, action.payload];
+      }
     case "REMOVE_ITEM":
-      return state.filter((item) => item.id !== action.payload);
+      return state.filter((item) => item.name !== action.payload);
 
     default:
       return state;

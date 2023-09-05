@@ -1,14 +1,17 @@
+import { BasketItem, useBasket } from "../context/basketContext";
+import { ItemInterface } from "./item";
+
 interface AddToCartProps {
   amount: number;
   setAmount: React.Dispatch<React.SetStateAction<number>>;
+  item: ItemInterface;
 }
 
 //ADD: react context
-export default function AddToCart({ amount, setAmount }: AddToCartProps) {
+export default function AddToCart({ amount, setAmount, item }: AddToCartProps) {
+  const { dispatch } = useBasket();
   function onMinus() {
-    if (amount === 1) {
-      //throw error
-    } else {
+    if (amount !== 1) {
       setAmount(() => {
         return amount - 1;
       });
@@ -21,8 +24,15 @@ export default function AddToCart({ amount, setAmount }: AddToCartProps) {
     });
   }
 
-  function applyToCart() {
-    //TODO: add to cart
+  function applyToCart(item: ItemInterface) {
+    const payload: BasketItem = {
+      image: item.thumbnails[0],
+      name: item.title,
+      price: item.price,
+      quantity: amount,
+    };
+    dispatch({ type: "ADD_ITEM", payload });
+    setAmount(1);
   }
 
   return (
@@ -32,7 +42,7 @@ export default function AddToCart({ amount, setAmount }: AddToCartProps) {
         {amount}
         <button onClick={onPlus}>+</button>
       </div>
-      <button onClick={applyToCart}>Add to cart</button>
+      <button onClick={() => applyToCart(item)}>Add to cart</button>
     </>
   );
 }
