@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AddToCart from "./addToCart";
+import Images from "./images";
 
 export interface ItemInterface {
   thumbnails: string[];
@@ -16,7 +17,7 @@ export default function Item({ item }: { item: ItemInterface }) {
   return (
     <div>
       <div id="item-description">
-        {/* image components */}
+        <Images images={item.images} />
         <p>{item.company}</p>
         <h1>{item.title}</h1>
         <p>{item.description}</p>
