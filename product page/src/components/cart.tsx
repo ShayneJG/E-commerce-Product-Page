@@ -37,5 +37,12 @@ export default function Cart() {
 
   let isCartEmpty: boolean = state.length == 0;
 
-  return <div>{isCartEmpty ? cartEmpty : cartFull}</div>;
+  return (
+    <div className="relative w-full rounded-md bg-white z-50">
+      <div className="border-b p-5">
+        <h1 className="">Cart</h1>
+      </div>
+      {isCartEmpty ? cartEmpty : cartFull}
+    </div>
+  );
 }
