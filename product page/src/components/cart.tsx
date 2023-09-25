@@ -8,7 +8,11 @@ export default function Cart() {
   }
 
   //JSX conditional elements for whether the cart is empty or full.
-  const cartEmpty = <p>Your cart is empty.</p>;
+  const cartEmpty = (
+    <div className="flex flex-1 justify-center items-center">
+      <p className="font-bold text-base">Your cart is empty.</p>
+    </div>
+  );
   const cartFull = state.map((item) => {
     const total: number = item.price * item.quantity;
 
@@ -38,11 +42,13 @@ export default function Cart() {
   let isCartEmpty: boolean = state.length == 0;
 
   return (
-    <div className="relative w-full rounded-md bg-white z-50">
-      <div className="border-b p-5">
-        <h1 className="">Cart</h1>
+    <div className="relative w-full rounded-md bg-white z-50 h-[360px]">
+      <div className="flex flex-col w-full h-full">
+        <div className="border-b p-5 w-full">
+          <h1 className="">Cart</h1>
+        </div>
+        {isCartEmpty ? cartEmpty : cartFull}
       </div>
-      {isCartEmpty ? cartEmpty : cartFull}
     </div>
   );
 }
