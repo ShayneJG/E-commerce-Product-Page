@@ -15,7 +15,7 @@ export interface ItemInterface {
 export default function Item({ item }: { item: ItemInterface }) {
   const [amount, setAmount] = useState(1);
   return (
-    <div>
+    <div className="">
       <div id="item-description">
         <Images images={item.images} />
         <p>{item.company}</p>
