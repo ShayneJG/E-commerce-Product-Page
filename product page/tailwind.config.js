@@ -9,7 +9,9 @@ export default {
     extend: {
       colors: {
         'customBlack': '#1d2026',
-        'customOrange': '#FF7e1b'
+        'customOrange': '#FF7e1b',
+        'customGrey': '#69707d' 
+
       },
       fontFamily: {
         'Kumbh-Sans': ["Kumbh Sans", "Sans"]
