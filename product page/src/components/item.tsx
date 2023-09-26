@@ -18,7 +18,7 @@ export default function Item({ item }: { item: ItemInterface }) {
   //total is the sale price OR the normal price if there is no sale
   const total: number = item.sale ? item.price * item.sale : item.price;
   return (
-    <div id="item" className="">
+    <div id="item" className="mb-10">
       <Images images={item.images} />
       <div id="item-description" className="p-5 flex flex-col gap-5">
         <p className=" text-customOrange font-bold text-xs tracking-[1.85px]">
