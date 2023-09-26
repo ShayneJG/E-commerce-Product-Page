@@ -18,6 +18,9 @@ export default {
       },
       dropShadow: {
         '3xl': '0px 4px 4px rgba(0, 0, 0, 0.25)' 
+      },
+      boxShadow: {
+        'orange': '0 20px 40px -10px rgba(255, 126, 27, 0.40)'
       }
     },
   },
