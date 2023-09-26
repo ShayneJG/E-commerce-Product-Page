@@ -1,5 +1,8 @@
 import { BasketItem, useBasket } from "../context/basketContext";
 import { ItemInterface } from "./item";
+import IconMinus from "/images/icon-minus.svg";
+import IconPlus from "/images/icon-plus.svg";
+import CartIcon from "./cartIcon";
 
 interface AddToCartProps {
   amount: number;
@@ -36,13 +39,29 @@ export default function AddToCart({ amount, setAmount, item }: AddToCartProps) {
   }
 
   return (
-    <>
-      <div id="plus/minus" className="">
-        <button onClick={onMinus}>-</button>
-        {amount}
-        <button onClick={onPlus}>+</button>
+    <div className="p-5 flex flex-col gap-5">
+      <div
+        id="plus/minus"
+        className="w-full flex justify-between bg-[#f6f8fd] h-[56px] items-center p-5 rounded-lg"
+      >
+        <button onClick={onMinus} className="text-customOrange">
+          <img src={IconMinus} />
+        </button>
+        <span className="font-bold text-base">{amount}</span>
+        <button onClick={onPlus}>
+          <img src={IconPlus} />
+        </button>
       </div>
-      <button onClick={() => applyToCart(item)}>Add to cart</button>
-    </>
+
+      <button
+        className="flex items-center justify-center w-full text-center h-[56px] bg-customOrange text-white text-base font-bold rounded-lg shadow-orange"
+        onClick={() => applyToCart(item)}
+      >
+        <div className="pr-5">
+          <CartIcon fill="#ffffff" />
+        </div>
+        Add to cart
+      </button>
+    </div>
   );
 }
