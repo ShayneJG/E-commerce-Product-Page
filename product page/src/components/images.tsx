@@ -43,7 +43,7 @@ export default function Images({ images }: ImagesProps) {
         <img src={IconNext} />
       </button>
 
-      <img className="w-full h-full" src={images[imageIndex]} />
+      <img className="aspect-[5/4] 	 w-full" src={images[imageIndex]} />
 
       <button
         className="flex items-center justify-center absolute right-5 bg-white w-10 h-10 rounded-full shrink-0"

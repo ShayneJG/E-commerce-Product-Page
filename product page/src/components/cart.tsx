@@ -9,9 +9,9 @@ export default function Cart() {
 
   //JSX conditional elements for whether the cart is empty or full.
   const cartEmpty = (
-    <div className="flex flex-1 justify-center items-center">
-      <p className="font-bold text-base">Your cart is empty.</p>
-    </div>
+    <p className="font-bold text-customGrey text-base text-center m-auto">
+      Your cart is empty.
+    </p>
   );
   const cartFull = state.map((item) => {
     const total: number = item.price * item.quantity;
@@ -53,10 +53,10 @@ export default function Cart() {
         <div className="border-b p-5 w-full">
           <h1 className="font-bold">Cart</h1>
         </div>
-        <div className="p-5 overflow-auto">
+        <div className="p-5 flex-1 overflow-auto flex justify-center ">
           {isCartEmpty ? cartEmpty : cartFull}
         </div>
-        {cartFull && (
+        {!isCartEmpty && (
           <div className="w-full">
             <button className="rounded-lg w-[90%] text-center h-[56px] bg-customOrange text-white font-bold m-5">
               Checkout
