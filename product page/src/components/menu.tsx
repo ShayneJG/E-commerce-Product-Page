@@ -19,24 +19,27 @@ export default function Menu({ setMenu }: MenuProps) {
   ];
 
   return (
-    <nav className="absolute top-0 w-2/3 h-screen bg-white z-50 p-5" id="menu">
-      <button
-        className="pb-7"
-        onClick={() => {
-          setMenu(false);
-        }}
-      >
-        <img alt="close menu" src={CloseIcon} />
-      </button>
-      <ul>
-        {navLinks.map((link, index) => {
-          return (
-            <li className="py-3 font-bold" key={`${link.name} ${index}`}>
-              <a href={link.URL}>{link.name}</a>
-            </li>
-          );
-        })}
-      </ul>
+    <nav className="absolute top-0 w-full h-screen z-50 flex " id="menu">
+      <div id="nav-left-space" className="bg-white p-5 w-2/3 h-screen">
+        <button
+          className="pb-7"
+          onClick={() => {
+            setMenu(false);
+          }}
+        >
+          <img alt="close menu" src={CloseIcon} />
+        </button>
+        <ul>
+          {navLinks.map((link, index) => {
+            return (
+              <li className="py-3 font-bold" key={`${link.name} ${index}`}>
+                <a href={link.URL}>{link.name}</a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>{" "}
+      <div id="nav-right-space" className="h-screen w-1/3 bg-black/75"></div>
     </nav>
   );
 }
