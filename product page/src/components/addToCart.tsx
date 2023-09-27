@@ -28,10 +28,11 @@ export default function AddToCart({ amount, setAmount, item }: AddToCartProps) {
   }
 
   function applyToCart(item: ItemInterface) {
+    const total: number = item.sale ? item.price * item.sale : item.price;
     const payload: BasketItem = {
       image: item.thumbnails[0],
       name: item.title,
-      price: item.price,
+      price: total,
       quantity: amount,
     };
     dispatch({ type: "ADD_ITEM", payload });
