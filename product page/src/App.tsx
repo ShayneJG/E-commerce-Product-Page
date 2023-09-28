@@ -26,10 +26,10 @@ function App() {
   }, []);
 
   return (
-    <div className="h-full w-full md:px-32">
+    <div className="h-full w-full md:px-[3%] lg:px-32">
       <TopBar isMobile={isMobile} />
 
-      <Item item={testData} />
+      <Item isMobile={isMobile} item={testData} />
     </div>
   );
 }
