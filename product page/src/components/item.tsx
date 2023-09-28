@@ -12,14 +12,24 @@ export interface ItemInterface {
   sale?: number;
 }
 
-export default function Item({ item }: { item: ItemInterface }) {
+export default function Item({
+  item,
+  isMobile,
+}: {
+  item: ItemInterface;
+  isMobile: boolean;
+}) {
   const [amount, setAmount] = useState(1);
 
   //total is the sale price OR the normal price if there is no sale
   const total: number = item.sale ? item.price * item.sale : item.price;
   return (
-    <div id="item" className="mb-10">
-      <Images images={item.images} />
+    <div id="item" className="mb-10 md:flex md:flex-row">
+      <Images
+        images={item.images}
+        thumbnails={item.thumbnails}
+        isMobile={isMobile}
+      />
       <div id="item-description" className="p-5 flex flex-col gap-5">
         <p className=" text-customOrange font-bold text-xs tracking-[1.85px]">
           {item.company.toLocaleUpperCase()}
