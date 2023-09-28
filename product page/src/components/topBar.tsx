@@ -6,7 +6,8 @@ import Logo from "/images/logo.svg";
 import Cart from "./cart";
 import Menu from "./menu";
 import { useBasket } from "../context/basketContext";
-export default function TopBar() {
+import { navLinks } from "./menu";
+export default function TopBar({ isMobile }: { isMobile: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -28,28 +29,48 @@ export default function TopBar() {
     </div>
   );
 
+  //conditional elements
+  const mobileMenuButton: JSX.Element = (
+    <button
+      id="menu-icon"
+      onClick={() => {
+        openHandler(setMenuOpen);
+      }}
+    >
+      <img src={IconMenu} className="h-4 pr-5  m-auto drop-shadow-3xl" />
+    </button>
+  );
+
+  const desktopMenu: JSX.Element = (
+    <nav id="desktop-menu">
+      <ul className="flex gap-12 text-[15px] text-customGrey leading-[26px]">
+        {navLinks.map((link) => {
+          return (
+            <li key={link.name}>
+              <a href={link.URL}>{link.name}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  );
+
   //TODO: render the cart and the menu here.
   return (
     <>
-      <header className="mx-4 my-5 p-2">
+      <header className="mx-4 my-5 p-2 md:pb-14 md:mb-20 md:border-b">
         <div id="header-container" className="flex justify-between h-6">
-          <div id="header-left" className="flex w-2/3 h-full">
-            <button
-              id="menu-icon"
-              onClick={() => {
-                openHandler(setMenuOpen);
-              }}
-            >
-              <img
-                src={IconMenu}
-                className="h-4 pr-5  m-auto drop-shadow-3xl"
-              />
-            </button>
+          <div id="header-left" className="flex w-2/3 h-full md:gap-20">
+            {isMobile && mobileMenuButton}
 
             <img src={Logo} className="drop-shadow-3xl h-full" />
+            {!isMobile && desktopMenu}
           </div>
-          <div id="header-right" className="flex w-1/3 place-content-end">
-            <div className="relative flex justify-center">
+          <div
+            id="header-right"
+            className="flex w-1/3 items-center place-content-end"
+          >
+            <div className="relative flex justify-center md:px-5">
               {count ? cartCount : null}
               <button
                 className="px-5"
@@ -62,7 +83,10 @@ export default function TopBar() {
               </button>
             </div>
             <div id="avatar">
-              <img src={IconAvatar} className="w-6 h-6 drop-shadow-3xl" />
+              <img
+                src={IconAvatar}
+                className="w-6 h-6 drop-shadow-3xl md:h-[50px] md:w-[50px]"
+              />
             </div>
           </div>
         </div>

@@ -9,15 +9,15 @@ interface Links {
   URL: string;
 }
 
-export default function Menu({ setMenu }: MenuProps) {
-  const navLinks: Links[] = [
-    { name: "Collections", URL: "" },
-    { name: "Men", URL: "" },
-    { name: "Women", URL: "" },
-    { name: "About", URL: "" },
-    { name: "Contact", URL: "" },
-  ];
+export const navLinks: Links[] = [
+  { name: "Collections", URL: "" },
+  { name: "Men", URL: "" },
+  { name: "Women", URL: "" },
+  { name: "About", URL: "" },
+  { name: "Contact", URL: "" },
+];
 
+export default function Menu({ setMenu }: MenuProps) {
   return (
     <nav className="absolute top-0 w-full h-screen z-50 flex " id="menu">
       <div id="nav-left-space" className="bg-white p-5 w-2/3 h-screen">
