@@ -47,7 +47,7 @@ export default function Images({ images, isMobile, thumbnails }: ImagesProps) {
           border = "border-2 rounded-lg border-solid border-customOrange";
         }
         return (
-          <div className={border}>
+          <div key={`border-${thumbnail}`} className={border}>
             <img
               onClick={() => {
                 onThumbnailClick(thumbnail);
