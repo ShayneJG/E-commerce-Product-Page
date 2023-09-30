@@ -43,10 +43,13 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
 
   const desktopMenu: JSX.Element = (
     <nav id="desktop-menu" className="w-full">
-      <ul className="flex flex-shrink gap-[7%] justify-between text-[15px] text-customGrey leading-[26px] max-w-lg">
+      <ul className="flex flex-shrink gap-[7%] justify-between text-[15px] text-customGrey leading-[26px] h-full max-w-lg">
         {navLinks.map((link) => {
           return (
-            <li key={link.name}>
+            <li
+              key={link.name}
+              className="h-full pb-[78px] hover:border-b-4 hover:border-customOrange hover:text-customBlack"
+            >
               <a href={link.URL}>{link.name}</a>
             </li>
           );
