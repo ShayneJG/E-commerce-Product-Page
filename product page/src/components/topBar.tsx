@@ -24,7 +24,7 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
   };
 
   const cartCount: JSX.Element = (
-    <div className="w-[19px] h-[13px] absolute -top-[4px] right-[14px] bg-customOrange rounded-lg text-center text-white z-30 text-[10px] font-bold">
+    <div className="w-[19px] h-[13px] absolute -top-[4px] -right-[5px] bg-customOrange rounded-lg text-center text-white z-30 text-[10px] font-bold">
       {count}
     </div>
   );
@@ -70,12 +70,12 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
           </div>
           <div
             id="header-right"
-            className="flex w-1/3 items-center place-content-end"
+            className="flex w-1/3 items-center gap-5 md:gap-10 place-content-end"
           >
-            <div className="relative flex justify-center md:px-5">
+            <div className="relative flex justify-center">
               {count ? cartCount : null}
               <button
-                className="px-5"
+                className=""
                 id="shopping-cart-icon"
                 onClick={() => {
                   openHandler(setCartOpen);
