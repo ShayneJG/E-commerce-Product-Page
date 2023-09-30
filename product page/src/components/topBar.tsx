@@ -60,7 +60,7 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
 
   return (
     <>
-      <header className="mx-4 my-5 p-2 md:pb-14 md:mb-20 md:border-b">
+      <header className="relative mx-4 my-5 p-2 md:pb-14 md:mb-20 md:border-b">
         <div id="header-container" className="flex justify-between h-6">
           <div
             id="header-left"
@@ -78,7 +78,6 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
             <div className="relative flex justify-center">
               {count ? cartCount : null}
               <button
-                className=""
                 id="shopping-cart-icon"
                 onClick={() => {
                   openHandler(setCartOpen);
@@ -96,7 +95,7 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
           </div>
         </div>
       </header>
-      <div className="absolute w-full p-2">{cartOpen && <Cart />}</div>
+      {isMobile && cartOpen && <Cart />}
       <div>{menuOpen && <Menu setMenu={setMenuOpen} />}</div>
     </>
   );

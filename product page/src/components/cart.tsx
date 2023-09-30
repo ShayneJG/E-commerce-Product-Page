@@ -48,21 +48,23 @@ export default function Cart() {
   let isCartEmpty: boolean = state.length == 0;
 
   return (
-    <div className="relative w-full rounded-md bg-white z-50 h-[256px]">
-      <div className="flex flex-col w-full h-full ">
-        <div className="border-b p-5 w-full">
-          <h1 className="font-bold">Cart</h1>
-        </div>
-        <div className="p-5 flex-1 overflow-auto flex justify-center ">
-          {isCartEmpty ? cartEmpty : cartFull}
-        </div>
-        {!isCartEmpty && (
-          <div className="w-full">
-            <button className="rounded-lg w-[90%] text-center h-[56px] bg-customOrange text-white font-bold m-5">
-              Checkout
-            </button>
+    <div className="absolute w-full flex justify-center mt-1">
+      <div className="w-[99%] rounded-md bg-white z-50 max-w-[360px] h-[256px]">
+        <div className="flex flex-col w-full h-full ">
+          <div className="border-b p-5 w-full">
+            <h1 className="font-bold">Cart</h1>
           </div>
-        )}
+          <div className="p-5 flex-1 overflow-auto flex justify-center ">
+            {isCartEmpty ? cartEmpty : cartFull}
+          </div>
+          {!isCartEmpty && (
+            <div className="w-full">
+              <button className="rounded-lg w-[90%] text-center h-[56px] bg-customOrange text-white font-bold m-5">
+                Checkout
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
