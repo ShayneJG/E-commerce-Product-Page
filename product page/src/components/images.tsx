@@ -63,7 +63,7 @@ export default function Images({ images, isMobile, thumbnails }: ImagesProps) {
   );
 
   return (
-    <div id="image-container" className="md:w-[445px]">
+    <div id="image-container" className="md:max-w-[445px]">
       <div
         id="image"
         className="flex flex-row items-center relative md:w-[455px]"

@@ -43,7 +43,7 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
 
   const desktopMenu: JSX.Element = (
     <nav id="desktop-menu" className="w-full">
-      <ul className="flex flex-shrink gap-[10%] justify-between text-[15px] text-customGrey leading-[26px] max-w-lg">
+      <ul className="flex flex-shrink gap-[7%] justify-between text-[15px] text-customGrey leading-[26px] max-w-lg">
         {navLinks.map((link) => {
           return (
             <li key={link.name}>
@@ -55,14 +55,13 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
     </nav>
   );
 
-  //TODO: render the cart and the menu here.
   return (
     <>
       <header className="mx-4 my-5 p-2 md:pb-14 md:mb-20 md:border-b">
         <div id="header-container" className="flex justify-between h-6">
           <div
             id="header-left"
-            className="flex w-2/3 h-full md:gap-5 lg:gap-20"
+            className="flex w-2/3 h-full md:gap-5 lg:gap-[7%]"
           >
             {isMobile && mobileMenuButton}
 

@@ -40,10 +40,10 @@ export default function AddToCart({ amount, setAmount, item }: AddToCartProps) {
   }
 
   return (
-    <div className="p-5 flex flex-col gap-5">
+    <div className="py-5 flex flex-col gap-5 md:flex-row">
       <div
         id="plus/minus"
-        className="w-full flex justify-between bg-[#f6f8fd] h-[56px] items-center p-5 rounded-lg"
+        className="w-full flex justify-between bg-[#f6f8fd] h-[56px] items-center p-5 rounded-lg md:w-[35%]"
       >
         <button onClick={onMinus} className="text-customOrange">
           <img src={IconMinus} />
