@@ -24,7 +24,7 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
   };
 
   const cartCount: JSX.Element = (
-    <div className="w-[19px] h-[13px] absolute -top-[4px] -right-[5px] bg-customOrange rounded-lg text-center text-white z-30 text-[10px] font-bold">
+    <div className="w-[19px] h-[13px] absolute -top-[4px] -right-[5px] bg-customOrange hover:cursor-pointer rounded-lg text-center text-white z-30 text-[10px] font-bold">
       {count}
     </div>
   );
@@ -32,12 +32,17 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
   //conditional elements
   const mobileMenuButton: JSX.Element = (
     <button
+      aria-label="menu"
       id="menu-icon"
       onClick={() => {
         openHandler(setMenuOpen);
       }}
     >
-      <img src={IconMenu} className="h-4 pr-5  m-auto drop-shadow-3xl" />
+      <img
+        alt="menu icon"
+        src={IconMenu}
+        className="h-4 pr-5  m-auto drop-shadow-3xl"
+      />
     </button>
   );
 
@@ -69,7 +74,7 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
           >
             {isMobile && mobileMenuButton}
 
-            <img src={Logo} className="drop-shadow-3xl h-full" />
+            <img alt="Sneakers" src={Logo} className="drop-shadow-3xl h-full" />
             {!isMobile && desktopMenu}
           </div>
           <div
@@ -83,7 +88,7 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
                 }}
               >
                 {count ? cartCount : null}
-                <button id="shopping-cart-icon">
+                <button aria-label="shopping cart" id="shopping-cart-icon">
                   <CartIcon hover style="drop-shadow-3xl" />
                 </button>
               </div>
@@ -92,6 +97,7 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
 
             <div id="avatar">
               <img
+                alt="profile avatar"
                 src={IconAvatar}
                 className="w-6 h-6 drop-shadow-3xl md:h-[50px] md:w-[50px] hover:border-customOrange hover:border-2 rounded-full"
               />

@@ -22,6 +22,7 @@ export default function Menu({ setMenu }: MenuProps) {
     <nav className="absolute top-0 w-full h-screen z-50 flex " id="menu">
       <div id="nav-left-space" className="bg-white p-5 w-2/3 h-screen">
         <button
+          aria-label="close menu"
           className="pb-7"
           onClick={() => {
             setMenu(false);

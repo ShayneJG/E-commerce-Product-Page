@@ -18,11 +18,15 @@ export default function Cart() {
 
     return (
       <div
-        className="w-full flex justify-between"
+        className=" flex justify-between items-center w-[312px] h-[52px]"
         id={item.name}
         key={item.name}
       >
-        <img className="h-12 w-12 rounded-md" src={item.image} />
+        <img
+          className="h-12 w-12 rounded-md"
+          src={item.image}
+          alt="Inventory photo"
+        />
         <div className=" text-base text-customGrey">
           <p className="">{item.name}</p>
           <div className="flex">
@@ -39,7 +43,7 @@ export default function Cart() {
             onDeleteHandler(item.name);
           }}
         >
-          <img src={IconDelete} />
+          <img alt="remove from cart" src={IconDelete} />
         </button>
       </div>
     );

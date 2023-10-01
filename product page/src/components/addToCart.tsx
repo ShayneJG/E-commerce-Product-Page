@@ -45,11 +45,11 @@ export default function AddToCart({ amount, setAmount, item }: AddToCartProps) {
         id="plus/minus"
         className="w-full flex justify-between bg-[#f6f8fd] h-[56px] items-center p-5 rounded-lg md:w-[35%]"
       >
-        <button onClick={onMinus}>
+        <button aria-label="remove item" onClick={onMinus}>
           <MathIcons type="minus" hover="#ffab6a" />
         </button>
         <span className="font-bold group text-base">{amount}</span>
-        <button onClick={onPlus}>
+        <button aria-label="add item" onClick={onPlus}>
           <MathIcons type="plus" hover="#ffab6a" />
         </button>
       </div>

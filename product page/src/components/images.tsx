@@ -62,6 +62,7 @@ export default function Images({
           <div key={`border-${thumbnail}`} className={border}>
             <div className={`max-w-[88px] bg-white   rounded-lg`}>
               <img
+                alt="inventory thumbnail"
                 onClick={() => {
                   onThumbnailClick(thumbnail);
                 }}
@@ -91,6 +92,7 @@ export default function Images({
         )}
 
         <img
+          alt="inventory photo"
           onClick={() => {
             if (!isMobile && setLightbox) {
               setLightbox(true);
