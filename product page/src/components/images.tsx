@@ -76,16 +76,16 @@ export default function Images({
       })}
     </div>
   );
-
-  let imageSize = lightbox ? "550px" : "445px";
+  let imageDisplaySize = "445px";
+  if (lightbox === true) {
+    console.log(lightbox);
+    imageDisplaySize = "550px";
+  }
   let display: JSX.Element = (
-    <div
-      id="image-container"
-      className={`md:max-w-[${imageSize}] md:max-h-[${imageSize}]`}
-    >
+    <div id="image-container" className={`md:max-w-[550px] md:max-h-[550px]`}>
       <div
         id="image"
-        className={`flex flex-row items-center relative md:w-[${imageSize}]`}
+        className={`flex flex-row items-center relative md:w-[${imageDisplaySize}]`}
       >
         {(isMobile || lightbox) && (
           <ArrowButton onClick={onMinus} direction="left" lightbox={lightbox} />
@@ -98,7 +98,7 @@ export default function Images({
               setLightbox(true);
             }
           }}
-          className={`aspect-[5/4] md:w-[${imageSize}] md:h-[${imageSize}] hover:cursor-pointer md:aspect-square md:rounded-lg w-full`}
+          className={`aspect-[5/4] md:w-[${imageDisplaySize}] md:h-[${imageDisplaySize}] hover:cursor-pointer md:aspect-square md:rounded-lg w-full`}
           src={images[imageIndex]}
         />
 
