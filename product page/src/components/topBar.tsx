@@ -48,7 +48,7 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
           return (
             <li
               key={link.name}
-              className="h-full pb-[78px] hover:border-b-4 hover:border-customOrange hover:text-customBlack"
+              className="h-full pb-[76px] hover:border-b-4 hover:border-customOrange hover:text-customBlack"
             >
               <a href={link.URL}>{link.name}</a>
             </li>
@@ -60,7 +60,8 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
 
   return (
     <>
-      <header className="relative mx-4 my-5 p-2 md:pb-14 md:mb-20 md:border-b md:mx-0 md:py-0">
+      {/* "relative mx-4 my-5 p-2 md:pb-14 md:mb-20 md:border-b md:mx-0 md:py-0 md:my-10" */}
+      <header className="relative mx-4 my-5 p-2 md:py-14 md:mb-20 md:border-b md:mx-0 md:my-0">
         <div id="header-container" className="flex justify-between h-6">
           <div
             id="header-left"

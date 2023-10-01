@@ -2,17 +2,19 @@ interface ArrowButtonProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   src: string;
   direction: "left" | "right";
+  lightbox?: boolean;
 }
 
 export default function ArrowButton({
   onClick,
   src,
   direction,
+  lightbox = false,
 }: ArrowButtonProps) {
-  let conditionalStyle: string = "right-5";
+  let conditionalStyle: string = lightbox ? "right-0" : "right-5";
 
   if (direction === "left") {
-    conditionalStyle = "left-5 rotate-180 ";
+    conditionalStyle = lightbox ? "left-0 rotate-180" : "left-5 rotate-180";
   }
   return (
     <button

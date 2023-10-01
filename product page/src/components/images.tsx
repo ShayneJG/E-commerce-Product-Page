@@ -1,6 +1,7 @@
 import { useState } from "react";
 import IconNext from "/images/icon-next.svg";
 import ArrowButton from "./ArrowButton";
+import MathIcons from "./mathIcons";
 interface ImagesProps {
   images: string[];
   isMobile: boolean;
@@ -9,6 +10,7 @@ interface ImagesProps {
 
 export default function Images({ images, isMobile, thumbnails }: ImagesProps) {
   const [imageIndex, setImageIndex] = useState(0);
+  const [lightbox, setLightbox] = useState(false);
 
   function onMinus() {
     if (imageIndex === 0) {
@@ -43,38 +45,47 @@ export default function Images({ images, isMobile, thumbnails }: ImagesProps) {
         let conditionalStyle: string = "";
         let border: string = "";
         if (index === imageIndex) {
-          conditionalStyle = "opacity-40";
-          border = "border-2 rounded-lg border-solid border-customOrange";
+          conditionalStyle = "opacity-25 bg-white";
+          border =
+            "border-2 bg-customOrange border-separate rounded-lg border-solid border-customOrange";
         }
         return (
           <div key={`border-${thumbnail}`} className={border}>
-            <img
-              onClick={() => {
-                onThumbnailClick(thumbnail);
-              }}
-              key={thumbnail}
-              src={thumbnail}
-              className={`max-w-[88px] hover:opacity-40 aspect-auto ${conditionalStyle} rounded-lg`}
-            />
+            <div className={`max-w-[88px] bg-white   rounded-lg`}>
+              <img
+                onClick={() => {
+                  onThumbnailClick(thumbnail);
+                }}
+                key={thumbnail}
+                src={thumbnail}
+                className={`max-w-[88px] max-h-[88px] hover:cursor-pointer hover:opacity-25 ${conditionalStyle} aspect-auto rounded-lg`}
+              />
+            </div>
           </div>
         );
       })}
     </div>
   );
 
-  return (
+  let display: JSX.Element = (
     <div id="image-container" className="md:max-w-[445px]">
       <div
         id="image"
         className="flex flex-row items-center relative md:w-[455px]"
       >
         {isMobile && (
-          <ArrowButton src={IconNext} onClick={onMinus} direction="left" />
+          <ArrowButton
+            src={IconNext}
+            onClick={onMinus}
+            direction="left"
+            lightbox={lightbox}
+          />
         )}
 
         <img
           onClick={() => {
             if (!isMobile) {
+              setLightbox(true);
             }
           }}
           className="aspect-[5/4] md:w-[445px] md:h-[445px] md:aspect-square md:rounded-lg w-full"
@@ -88,4 +99,25 @@ export default function Images({ images, isMobile, thumbnails }: ImagesProps) {
       {!isMobile && ImageRow}
     </div>
   );
+
+  if (lightbox) {
+    return (
+      <div className="absolute top-0 left-0 w-screen h-screen bg-black/75 flex flex-col justify-center items-center">
+        <div>
+          <div className="flex w-full justify-end py-3">
+            <button
+              onClick={() => {
+                setLightbox(false);
+              }}
+            >
+              {<MathIcons type="close" fill="#D8D8D8" hover="#FF7E1B" />}
+            </button>
+          </div>
+          {display}
+        </div>
+      </div>
+    );
+  }
+
+  return display;
 }

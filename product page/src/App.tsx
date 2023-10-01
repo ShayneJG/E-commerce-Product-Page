@@ -26,7 +26,7 @@ function App() {
   }, []);
 
   return (
-    <div className="h-full w-full  max-w-[1110px] mb-10 mx-auto md:mt-5">
+    <div className="h-full w-full  max-w-[1110px] mb-10 mx-auto">
       <TopBar isMobile={isMobile} />
 
       <Item isMobile={isMobile} item={testData} />
