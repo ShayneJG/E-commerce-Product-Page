@@ -36,7 +36,7 @@ export default function MathIcons({
           </defs>
           <use
             fill={isHover && hover ? hover : fill}
-            fill-rule="nonzero"
+            fillRule="nonzero"
             xlinkHref="#a"
           />
         </svg>
@@ -63,7 +63,7 @@ export default function MathIcons({
           </defs>
           <use
             fill={isHover && hover ? hover : fill}
-            fill-rule="nonzero"
+            fillRule="nonzero"
             xlinkHref="#b"
           />
         </svg>
