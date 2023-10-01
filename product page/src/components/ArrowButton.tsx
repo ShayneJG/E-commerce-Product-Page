@@ -1,13 +1,14 @@
+import { useState } from "react";
+
 interface ArrowButtonProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  src: string;
+
   direction: "left" | "right";
   lightbox?: boolean;
 }
 
 export default function ArrowButton({
   onClick,
-  src,
   direction,
   lightbox,
 }: ArrowButtonProps) {
@@ -34,12 +35,27 @@ export default function ArrowButton({
 
   let style = buttonStyle();
 
+  const [stroke, setStroke] = useState("#1D2026");
   return (
     <button
+      onMouseEnter={() => {
+        setStroke("#FF7E1B");
+      }}
+      onMouseLeave={() => {
+        setStroke("#1D2026");
+      }}
       className={`flex items-center justify-center absolute bg-white w-10 h-10 rounded-full ${style} shrink-0`}
       onClick={onClick}
     >
-      <img src={src} />
+      <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="m2 1 8 8-8 8"
+          stroke={stroke}
+          strokeWidth="3"
+          fill="none"
+          fillRule="evenodd"
+        />
+      </svg>
     </button>
   );
 }

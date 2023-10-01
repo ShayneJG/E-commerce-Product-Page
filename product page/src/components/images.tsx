@@ -1,5 +1,4 @@
 import { useState } from "react";
-import IconNext from "/images/icon-next.svg";
 import ArrowButton from "./ArrowButton";
 
 interface ImagesProps {
@@ -47,7 +46,10 @@ export default function Images({
 
   //render row of images
   const ImageRow: JSX.Element = (
-    <div id="image-row" className="flex flex-row justify-between pt-10">
+    <div
+      id="image-row"
+      className="flex flex-row justify-between pt-10 max-w-[445px] m-auto"
+    >
       {thumbnails.map((thumbnail, index) => {
         let conditionalStyle: string = "";
         let border: string = "";
@@ -85,12 +87,7 @@ export default function Images({
         className={`flex flex-row items-center relative md:w-[${imageSize}]`}
       >
         {(isMobile || lightbox) && (
-          <ArrowButton
-            src={IconNext}
-            onClick={onMinus}
-            direction="left"
-            lightbox={lightbox}
-          />
+          <ArrowButton onClick={onMinus} direction="left" lightbox={lightbox} />
         )}
 
         <img
@@ -104,12 +101,7 @@ export default function Images({
         />
 
         {(isMobile || lightbox) && (
-          <ArrowButton
-            src={IconNext}
-            onClick={onPlus}
-            direction="right"
-            lightbox={lightbox}
-          />
+          <ArrowButton onClick={onPlus} direction="right" lightbox={lightbox} />
         )}
       </div>
       {!isMobile && ImageRow}
