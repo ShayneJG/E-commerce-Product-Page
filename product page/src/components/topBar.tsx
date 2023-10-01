@@ -1,5 +1,4 @@
 import { Dispatch, useState } from "react";
-import IconCart from "/images/icon-cart.svg";
 import IconAvatar from "/images/image-avatar.png";
 import IconMenu from "/images/icon-menu.svg";
 import Logo from "/images/logo.svg";
@@ -7,6 +6,7 @@ import Cart from "./cart";
 import Menu from "./menu";
 import { useBasket } from "../context/basketContext";
 import { navLinks } from "./menu";
+import CartIcon from "./cartIcon";
 export default function TopBar({ isMobile }: { isMobile: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
@@ -84,7 +84,7 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
               >
                 {count ? cartCount : null}
                 <button id="shopping-cart-icon">
-                  <img className="drop-shadow-3xl" src={IconCart} />
+                  <CartIcon hover style="drop-shadow-3xl" />
                 </button>
               </div>
               {!isMobile && cartOpen && <Cart />}
