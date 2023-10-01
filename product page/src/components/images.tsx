@@ -73,6 +73,10 @@ export default function Images({ images, isMobile, thumbnails }: ImagesProps) {
         )}
 
         <img
+          onClick={() => {
+            if (!isMobile) {
+            }
+          }}
           className="aspect-[5/4] md:w-[445px] md:h-[445px] md:aspect-square md:rounded-lg w-full"
           src={images[imageIndex]}
         />

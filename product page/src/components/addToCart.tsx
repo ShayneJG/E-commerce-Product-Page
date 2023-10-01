@@ -1,7 +1,6 @@
 import { BasketItem, useBasket } from "../context/basketContext";
 import { ItemInterface } from "./item";
-import IconMinus from "/images/icon-minus.svg";
-import IconPlus from "/images/icon-plus.svg";
+
 import CartIcon from "./cartIcon";
 import MathIcons from "./mathIcons";
 
