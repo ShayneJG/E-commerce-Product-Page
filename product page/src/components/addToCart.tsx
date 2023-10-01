@@ -3,6 +3,7 @@ import { ItemInterface } from "./item";
 import IconMinus from "/images/icon-minus.svg";
 import IconPlus from "/images/icon-plus.svg";
 import CartIcon from "./cartIcon";
+import MathIcons from "./mathIcons";
 
 interface AddToCartProps {
   amount: number;
@@ -45,17 +46,17 @@ export default function AddToCart({ amount, setAmount, item }: AddToCartProps) {
         id="plus/minus"
         className="w-full flex justify-between bg-[#f6f8fd] h-[56px] items-center p-5 rounded-lg md:w-[35%]"
       >
-        <button onClick={onMinus} className="text-customOrange">
-          <img src={IconMinus} />
+        <button onClick={onMinus}>
+          <MathIcons type="minus" hover="#ffab6a" />
         </button>
-        <span className="font-bold text-base">{amount}</span>
+        <span className="font-bold group text-base">{amount}</span>
         <button onClick={onPlus}>
-          <img src={IconPlus} />
+          <MathIcons type="plus" hover="#ffab6a" />
         </button>
       </div>
 
       <button
-        className="flex items-center justify-center w-full text-center h-[56px] bg-customOrange text-white text-base font-bold rounded-lg shadow-orange"
+        className="flex items-center justify-center w-full text-center h-[56px] bg-customOrange text-white text-base font-bold rounded-lg shadow-orange hover:bg-[#ffab6a]"
         onClick={() => applyToCart(item)}
       >
         <div className="pr-5">
