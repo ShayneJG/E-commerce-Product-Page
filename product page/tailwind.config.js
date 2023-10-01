@@ -5,6 +5,9 @@ export default {
    "./src/**/*.{js,ts,tsx,jsx}",
    "/components/**/*.{js,ts,jsx,tsx,mdx}"
   ],
+  variants: {
+    fill: ['hover', 'focus'],
+  },
   theme: {
     extend: {
       colors: {
