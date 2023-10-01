@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddToCart from "./addToCart";
 import Images from "./images";
+import MathIcons from "./mathIcons";
 
 export interface ItemInterface {
   thumbnails: string[];
@@ -20,6 +21,7 @@ export default function Item({
   isMobile: boolean;
 }) {
   const [amount, setAmount] = useState(1);
+  const [lightbox, setLightbox] = useState(false);
 
   const discountStrikethrough: JSX.Element = (
     <span className="line-through	text-[#b6bcc8]">{`$${item.price.toFixed(
@@ -38,6 +40,7 @@ export default function Item({
         images={item.images}
         thumbnails={item.thumbnails}
         isMobile={isMobile}
+        setLightbox={setLightbox}
       />
       <div
         id="item-description"
@@ -67,6 +70,28 @@ export default function Item({
         </div>
         {item.sale && !isMobile && discountStrikethrough}
         <AddToCart amount={amount} setAmount={setAmount} item={item} />
+        {lightbox && (
+          <div className="absolute top-0 left-0 w-screen h-screen bg-black/75 flex flex-col justify-center items-center">
+            <div>
+              <div className="flex w-full justify-end py-3">
+                <button
+                  onClick={() => {
+                    setLightbox(false);
+                  }}
+                >
+                  {<MathIcons type="close" fill="#D8D8D8" hover="#FF7E1B" />}
+                </button>
+              </div>
+              <Images
+                images={item.images}
+                thumbnails={item.thumbnails}
+                isMobile={isMobile}
+                lightbox={lightbox}
+                setLightbox={setLightbox}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,16 +1,23 @@
 import { useState } from "react";
 import IconNext from "/images/icon-next.svg";
 import ArrowButton from "./ArrowButton";
-import MathIcons from "./mathIcons";
+
 interface ImagesProps {
   images: string[];
   isMobile: boolean;
   thumbnails: string[];
+  lightbox?: boolean;
+  setLightbox?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Images({ images, isMobile, thumbnails }: ImagesProps) {
+export default function Images({
+  images,
+  isMobile,
+  thumbnails,
+  lightbox,
+  setLightbox,
+}: ImagesProps) {
   const [imageIndex, setImageIndex] = useState(0);
-  const [lightbox, setLightbox] = useState(false);
 
   function onMinus() {
     if (imageIndex === 0) {
@@ -67,13 +74,17 @@ export default function Images({ images, isMobile, thumbnails }: ImagesProps) {
     </div>
   );
 
+  let imageSize = lightbox ? "550px" : "445px";
   let display: JSX.Element = (
-    <div id="image-container" className="md:max-w-[445px]">
+    <div
+      id="image-container"
+      className={`md:max-w-[${imageSize}] md:max-h-[${imageSize}]`}
+    >
       <div
         id="image"
-        className="flex flex-row items-center relative md:w-[455px]"
+        className={`flex flex-row items-center relative md:w-[${imageSize}]`}
       >
-        {isMobile && (
+        {(isMobile || lightbox) && (
           <ArrowButton
             src={IconNext}
             onClick={onMinus}
@@ -84,40 +95,26 @@ export default function Images({ images, isMobile, thumbnails }: ImagesProps) {
 
         <img
           onClick={() => {
-            if (!isMobile) {
+            if (!isMobile && setLightbox) {
               setLightbox(true);
             }
           }}
-          className="aspect-[5/4] md:w-[445px] md:h-[445px] md:aspect-square md:rounded-lg w-full"
+          className={`aspect-[5/4] md:w-[${imageSize}] md:h-[${imageSize}] hover:cursor-pointer md:aspect-square md:rounded-lg w-full`}
           src={images[imageIndex]}
         />
 
-        {isMobile && (
-          <ArrowButton src={IconNext} onClick={onPlus} direction="right" />
+        {(isMobile || lightbox) && (
+          <ArrowButton
+            src={IconNext}
+            onClick={onPlus}
+            direction="right"
+            lightbox={lightbox}
+          />
         )}
       </div>
       {!isMobile && ImageRow}
     </div>
   );
-
-  if (lightbox) {
-    return (
-      <div className="absolute top-0 left-0 w-screen h-screen bg-black/75 flex flex-col justify-center items-center">
-        <div>
-          <div className="flex w-full justify-end py-3">
-            <button
-              onClick={() => {
-                setLightbox(false);
-              }}
-            >
-              {<MathIcons type="close" fill="#D8D8D8" hover="#FF7E1B" />}
-            </button>
-          </div>
-          {display}
-        </div>
-      </div>
-    );
-  }
 
   return display;
 }

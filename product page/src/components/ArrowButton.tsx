@@ -9,16 +9,34 @@ export default function ArrowButton({
   onClick,
   src,
   direction,
-  lightbox = false,
+  lightbox,
 }: ArrowButtonProps) {
-  let conditionalStyle: string = lightbox ? "right-0" : "right-5";
+  function buttonStyle() {
+    let mobileLeft: string = "left-5 rotate-180";
+    let mobileRight: string = "right-5";
+    let lightboxLeft: string = "-left-[20px] rotate-180";
+    let lightboxRight: string = "-right-[20px]";
 
-  if (direction === "left") {
-    conditionalStyle = lightbox ? "left-0 rotate-180" : "left-5 rotate-180";
+    if (lightbox) {
+      if (direction === "left") {
+        return lightboxLeft;
+      } else {
+        return lightboxRight;
+      }
+    }
+
+    if (direction === "left") {
+      return mobileLeft;
+    } else {
+      return mobileRight;
+    }
   }
+
+  let style = buttonStyle();
+
   return (
     <button
-      className={`flex items-center justify-center absolute bg-white w-10 h-10 rounded-full ${conditionalStyle} shrink-0`}
+      className={`flex items-center justify-center absolute bg-white w-10 h-10 rounded-full ${style} shrink-0`}
       onClick={onClick}
     >
       <img src={src} />
