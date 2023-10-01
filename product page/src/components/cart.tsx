@@ -48,8 +48,8 @@ export default function Cart() {
   let isCartEmpty: boolean = state.length == 0;
 
   return (
-    <div className="absolute w-full flex justify-center mt-1">
-      <div className="w-[99%] rounded-md bg-white z-50 max-w-[360px] h-[256px]">
+    <div className="absolute z-50 w-full flex justify-center mt-1 md:w-[360px] md:top-10 drop-shadow-3xl">
+      <div className="w-[99%] rounded-md bg-white z-50 max-w-[360px] h-[256px] md:w-[360px]">
         <div className="flex flex-col w-full h-full ">
           <div className="border-b p-5 w-full">
             <h1 className="font-bold">Cart</h1>

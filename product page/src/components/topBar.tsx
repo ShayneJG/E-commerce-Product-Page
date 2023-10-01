@@ -43,7 +43,7 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
 
   const desktopMenu: JSX.Element = (
     <nav id="desktop-menu" className="w-full">
-      <ul className="flex flex-shrink gap-[7%] justify-between text-[15px] text-customGrey leading-[26px] h-full max-w-lg">
+      <ul className="flex flex-shrink justify-between text-[15px] text-customGrey leading-[26px] h-full max-w-[397px]">
         {navLinks.map((link) => {
           return (
             <li
@@ -60,11 +60,11 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
 
   return (
     <>
-      <header className="relative mx-4 my-5 p-2 md:pb-14 md:mb-20 md:border-b">
+      <header className="relative mx-4 my-5 p-2 md:pb-14 md:mb-20 md:border-b md:mx-0 md:py-0">
         <div id="header-container" className="flex justify-between h-6">
           <div
             id="header-left"
-            className="flex w-2/3 h-full md:gap-5 lg:gap-[7%]"
+            className="flex w-2/3 h-full md:gap-5 lg:gap-[7%] md:w-[591px]"
           >
             {isMobile && mobileMenuButton}
 
@@ -76,27 +76,30 @@ export default function TopBar({ isMobile }: { isMobile: boolean }) {
             className="flex w-1/3 items-center gap-5 md:gap-10 place-content-end"
           >
             <div className="relative flex justify-center">
-              {count ? cartCount : null}
-              <button
-                id="shopping-cart-icon"
+              <div
                 onClick={() => {
                   openHandler(setCartOpen);
                 }}
               >
-                <img className="drop-shadow-3xl" src={IconCart} />
-              </button>
+                {count ? cartCount : null}
+                <button id="shopping-cart-icon">
+                  <img className="drop-shadow-3xl" src={IconCart} />
+                </button>
+              </div>
+              {!isMobile && cartOpen && <Cart />}
             </div>
+
             <div id="avatar">
               <img
                 src={IconAvatar}
-                className="w-6 h-6 drop-shadow-3xl md:h-[50px] md:w-[50px]"
+                className="w-6 h-6 drop-shadow-3xl md:h-[50px] md:w-[50px] hover:border-customOrange hover:border-2 rounded-full"
               />
             </div>
           </div>
         </div>
       </header>
       {isMobile && cartOpen && <Cart />}
-      <div>{menuOpen && <Menu setMenu={setMenuOpen} />}</div>
+      {menuOpen && <Menu setMenu={setMenuOpen} />}
     </>
   );
 }

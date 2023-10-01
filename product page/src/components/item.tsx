@@ -32,7 +32,7 @@ export default function Item({
   return (
     <div
       id="item"
-      className="mb-10 md:mx-[5%] md:gap-9 md:flex md:flex-row md:justify-between"
+      className="md:mx-[5%] gap-10 md:flex md:flex-row md:justify-between lg:-w-[1015px]"
     >
       <Images
         images={item.images}
@@ -41,7 +41,7 @@ export default function Item({
       />
       <div
         id="item-description"
-        className="p-5 flex flex-col mx-auto max-w-[445px] max-h-[426px] gap-5 md:p-0 md:mt-16"
+        className="p-5 flex flex-col mx-auto max-w-[445px] max-h-[426px] gap-5 md:p-0 md:mt-16 md:mx-0"
       >
         <p className=" text-customOrange font-bold text-xs tracking-[1.85px] md:text-[13px]">
           {item.company.toLocaleUpperCase()}
